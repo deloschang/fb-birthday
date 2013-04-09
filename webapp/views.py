@@ -20,6 +20,10 @@ def pull_facebook(access_token):
 
     full_data = graph.get('me/friends?fields=id,name,birthday')
 
-    return full_data
+    import pdb;
+    pdb.set_trace()
+
+    # remove the paging portions
+    data = full_data['data']
 
 
