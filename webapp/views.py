@@ -1,4 +1,4 @@
 from django.shortcuts import render_to_response
 
 def home(request):
-    render_to_response("main.html")
+    return render_to_response("main.html")
