@@ -7,14 +7,19 @@ def home(request):
         access_token = request.user.social_auth.all().get(user=request.user, provider='facebook').extra_data['access_token']
 
         # pull the birthday data from facebook
-        data_amount = pull_facebook(access_token)
+        data = pull_facebook(access_token)
 
 
-        return render_to_response('loggedin.html')
+        return render_to_response('loggedin.html', {'data':data} )
     except AttributeError:
         return render_to_response('main.html')
 
+# pull the birthday information
 def pull_facebook(access_token):
     graph = GraphAPI(access_token)
+
+    full_data = graph.get('me/friends?fields=id,name,birthday')
+
+    return full_data
 
 

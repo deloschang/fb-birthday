@@ -1,4 +1,4 @@
-# Django settings for birthday project.
+#birthday Django settings for birthday project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -136,7 +136,7 @@ FACEBOOK_APP_ID              = '147151085454013'
 FACEBOOK_API_SECRET          = '27f961ba9fd7c859b62b9fe303fff7cf'
 
 # figure out permissions for friends birthday?
-FACEBOOK_EXTENDED_PERMISSIONS = ['publish_actions', 'friends_status']
+FACEBOOK_EXTENDED_PERMISSIONS = ['publish_actions', 'friends_birthday']
 
 LOGIN_URL          = '/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
