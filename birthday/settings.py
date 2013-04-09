@@ -130,11 +130,13 @@ INSTALLED_APPS = (
 )
 
 # social auth keys
+
+# set up social keys
 FACEBOOK_APP_ID              = '147151085454013'
 FACEBOOK_API_SECRET          = '27f961ba9fd7c859b62b9fe303fff7cf'
 
-# figure out permissions for birthday?
-FACEBOOK_EXTENDED_PERMISSIONS = ['read_stream', 'friends_status']
+# figure out permissions for friends birthday?
+FACEBOOK_EXTENDED_PERMISSIONS = ['publish_actions', 'friends_status']
 
 LOGIN_URL          = '/'
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
