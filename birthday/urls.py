@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'webapp.views.home', name='home'),
      url(r'', include('social_auth.urls')),
+     url(r'^pull_facebook', 'webapp.views.pull_facebook', name='pull_facebook'),
 
     # url(r'^birthday/', include('birthday.foo.urls')),
 

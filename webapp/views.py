@@ -1,3 +1,4 @@
+# this is mysterious code territory----
 from django.shortcuts import render_to_response
 from facepy import GraphAPI
 
@@ -8,6 +9,8 @@ def home(request):
 
         # pull the birthday data from facebook
         data = pull_facebook(access_token)
+        #data = '1'
+
 
 
         return render_to_response('loggedin.html', {'data':data} )
@@ -16,6 +19,10 @@ def home(request):
 
 # pull the birthday information
 def pull_facebook(access_token):
+    # clean database first
+
+
+
     graph = GraphAPI(access_token)
 
     # offset used for paginating Facebook users
@@ -25,13 +32,20 @@ def pull_facebook(access_token):
     # remove the paging portions
     data = full_data['data']
 
+
+    #### TESTING facebook post functionality #####
+    friend_id='me'
+    message='Testing API'
+    graph.post(path=friend_id+"/feed", retry=1, message=message)
+    print "Done"
+    
+    
+
     # keep scraping until no more material
     while not not full_data['data']:
         data = full_data['data']
 
-        import pdb;
-        pdb.set_trace()
-
+        # parse out
         for i in range(0,len(data)):
             if 'birthday' in data[i]:
                 print data[i]['birthday']
