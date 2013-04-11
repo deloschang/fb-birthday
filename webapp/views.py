@@ -29,11 +29,17 @@ def pull_facebook(access_token):
     while not not full_data['data']:
         data = full_data['data']
 
-        counter = 0 
-        if 'birthday' in data[counter]:
-            return data[counter]['birthday']
+        import pdb;
+        pdb.set_trace()
 
-        counter+=1
+        for i in range(0,len(data)):
+            if 'birthday' in data[i]:
+                print data[i]['birthday']
+
+                # process that birthday there.
+                # store in database
+                # run cron job.
+
 
         offset += 1000 # inc offset each time to search for more facebook users and paginate
 
