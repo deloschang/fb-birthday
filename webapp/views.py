@@ -18,12 +18,32 @@ def home(request):
 def pull_facebook(access_token):
     graph = GraphAPI(access_token)
 
-    full_data = graph.get('me/friends?fields=id,name,birthday')
-
-    import pdb;
-    pdb.set_trace()
+    # offset used for paginating Facebook users
+    offset = 0
+    full_data = graph.get('me/friends?fields=id,name,birthday&offset='+str(offset))
 
     # remove the paging portions
     data = full_data['data']
+
+    # keep scraping until no more material
+    while not not full_data['data']:
+        data = full_data['data']
+
+        counter = 0 
+        if 'birthday' in data[counter]:
+            return data[counter]['birthday']
+
+        counter+=1
+
+        offset += 1000 # inc offset each time to search for more facebook users and paginate
+
+        print "Finished one loop, starting another"
+
+        # Make the pagination request
+        full_data = graph.get('me/friends?fields=id,name,birthday&offset='+str(offset))
+
+    
+
+    return data
 
 
