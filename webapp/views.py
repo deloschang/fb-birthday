@@ -35,11 +35,13 @@ def pull_facebook(access_token):
 
     #### TESTING facebook post functionality #####
     friend_id='me'
-    message='Testing API'
-    graph.post(path=friend_id+"/feed", retry=1, message=message)
-    print "Done"
     
+    message='Check 1 2 3 '
+    #graph.post(path=friend_id+"/feed", retry=1, message=message)
     
+    permissions = graph.get('me/permissions')
+    print permissions
+
 
     # keep scraping until no more material
     while not not full_data['data']:

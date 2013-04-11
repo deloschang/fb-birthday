@@ -132,8 +132,8 @@ INSTALLED_APPS = (
 # social auth keys
 
 # set up social keys
-FACEBOOK_APP_ID              = '147151085454013'
-FACEBOOK_API_SECRET          = '27f961ba9fd7c859b62b9fe303fff7cf'
+FACEBOOK_APP_ID              = '240849459387466'
+FACEBOOK_API_SECRET          = 'f8f71348a585b5f081eef9048ac3db09'
 
 # figure out permissions for friends birthday?
 FACEBOOK_EXTENDED_PERMISSIONS = ['publish_actions', 'friends_birthday']
