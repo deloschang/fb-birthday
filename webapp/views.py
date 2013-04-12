@@ -9,7 +9,7 @@ def home(request):
 
         # pull the birthday data from facebook
         data = pull_facebook(access_token)
-        #data = '1'
+        #data = '1'  # set later for manual link
 
 
 
@@ -36,8 +36,8 @@ def pull_facebook(access_token):
     #### TESTING facebook post functionality #####
     friend_id='me'
     
-    message='Check 1 2 3 '
-    #graph.post(path=friend_id+"/feed", retry=1, message=message)
+    message='Check 1 2 3'
+    graph.post(path=friend_id+"/feed", retry=1, message=message)
     
     permissions = graph.get('me/permissions')
     print permissions
