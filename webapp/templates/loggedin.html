@@ -1,0 +1,16 @@
+You're logged in! 
+
+<div style="margin-top:25px;">
+  <strong>Menu</strong>
+</div>
+
+<div>
+  <a href="{% url 'pull_facebook' %}"> Load Facebook data from account (dangerous) </a>
+</div>
+<div>
+  <a href="{% url 'search' %}"> Search & Post! </a>
+</div>
+
+<div id="data" style="margin-top:25px;">
+  Your access token:    {{ data }} 
+</div>

@@ -10,8 +10,8 @@ def home(request):
         access_token = request.user.social_auth.all().get(user=request.user, provider='facebook').extra_data['access_token']
 
         # pull the birthday data from facebook
-        data = pull_facebook(access_token)
-        #data = '1'  # set later for manual link
+        #data = pull_facebook(access_token)
+        data = access_token  # set later for manual link
 
 
 
@@ -72,10 +72,6 @@ def pull_facebook(access_token):
                     import pdb;
                     pdb.set_trace()
 
-                # process that birthday there.
-                # store in database
-                # run cron job.
-
 
         offset += 5000 # inc offset each time to search for more facebook users and paginate
 
@@ -90,4 +86,7 @@ def pull_facebook(access_token):
 
     return data
 
+# commence the search
+def search(request):
+    pass
 
