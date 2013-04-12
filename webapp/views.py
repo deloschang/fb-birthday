@@ -1,4 +1,6 @@
 # this is mysterious code territory----
+from webapp.models import * 
+
 from django.shortcuts import render_to_response
 from facepy import GraphAPI
 
@@ -37,7 +39,7 @@ def pull_facebook(access_token):
     friend_id='me'
     
     message='Check 1 2 3'
-    graph.post(path=friend_id+"/feed", retry=1, message=message)
+    #graph.post(path=friend_id+"/feed", retry=1, message=message)
     
     permissions = graph.get('me/permissions')
     print permissions
@@ -50,7 +52,14 @@ def pull_facebook(access_token):
         # parse out
         for i in range(0,len(data)):
             if 'birthday' in data[i]:
+                print data[i]['id'],
+                print data[i]['name'],
                 print data[i]['birthday']
+
+                # add user to the db
+                #print Person.objects.all()
+                new_person = Person(name = data[i]['name'], uid = data[i]['id'], birthday = data[i]['birthday'])
+                print new_person
 
                 # process that birthday there.
                 # store in database
