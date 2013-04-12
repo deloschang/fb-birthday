@@ -46,12 +46,13 @@ def pull_facebook(access_token):
     print permissions
 
 
+    counter = 0  # count how many loaded into DB
+
     # keep scraping until no more material
     while not not full_data['data']:
         data = full_data['data']
 
         # parse out
-        counter = 0  # count how many loaded into DB
         for i in range(0,len(data)):
             if 'birthday' in data[i]:
                 print data[i]['id'],
@@ -83,7 +84,9 @@ def pull_facebook(access_token):
         # Make the pagination request
         full_data = graph.get('me/friends?fields=id,name,birthday&offset='+str(offset))
 
-    
+    print str(counter) + " total people loaded into database."
+    print + " ============================== "
+
 
     return data
 
