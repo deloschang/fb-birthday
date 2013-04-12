@@ -57,9 +57,14 @@ def pull_facebook(access_token):
                 print data[i]['birthday']
 
                 # add user to the db
-                #print Person.objects.all()
                 new_person = Person(name = data[i]['name'], uid = data[i]['id'], birthday = data[i]['birthday'])
-                print new_person
+
+                try:
+                    new_person.save()
+                    print new_person.name + " loaded to database."
+                except:
+                    import pdb;
+                    pdb.set_trace()
 
                 # process that birthday there.
                 # store in database
