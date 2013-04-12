@@ -29,7 +29,8 @@ def pull_facebook(access_token):
 
     # offset used for paginating Facebook users
     offset = 0
-    full_data = graph.get('me/friends?fields=id,name,birthday&offset='+str(offset))
+    LIMIT = 5000
+    full_data = graph.get('me/friends?fields=id,name,birthday&limit='+str(LIMIT)+'+offset='+str(offset))
 
     # remove the paging portions
     data = full_data['data']
@@ -50,6 +51,7 @@ def pull_facebook(access_token):
         data = full_data['data']
 
         # parse out
+        counter = 0  # count how many loaded into DB
         for i in range(0,len(data)):
             if 'birthday' in data[i]:
                 print data[i]['id'],
@@ -62,7 +64,10 @@ def pull_facebook(access_token):
                 try:
                     new_person.save()
                     print new_person.name + " loaded to database."
+                    counter += 1
                 except:
+                    print "Error on " + new_person.name
+                    print str(i) + " loaded."
                     import pdb;
                     pdb.set_trace()
 
@@ -71,7 +76,7 @@ def pull_facebook(access_token):
                 # run cron job.
 
 
-        offset += 1000 # inc offset each time to search for more facebook users and paginate
+        offset += 5000 # inc offset each time to search for more facebook users and paginate
 
         print "Finished one loop, starting another"
 
